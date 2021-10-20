@@ -52,3 +52,11 @@ Types of propellants
 - Use the Area-Mach equation to correlate gas properties throughout nozzle as a function of cross-sectional area (depends on isentropic gamma ratios)
 
 - exhaust velocity equation
+
+# Contour
+
+Generated Contour
+- Has regen section and a radiative nozzle extention section
+- config file for RPA (evaluative copy)
+
+Contour represents the inner surface of the rocket engine that our chamber has to meet.
