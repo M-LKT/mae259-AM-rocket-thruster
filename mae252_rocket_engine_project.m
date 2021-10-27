@@ -42,18 +42,23 @@ clc, clear
 % qr = eps_g*sig*Tg^4
 
 %% Properties
-k = 1; % Thermal conductivity of chamber wall
+k = 320; % W/m^2-K Thermal conductivity of chamber wall
+Tmax = 500+273; % K, service temp of C18150
 
 %% Parameters
 L = 1; % Wall thickness of combustion chamber
 
-TL_lox = 90; % LOX temperature
-TL_CH4 = 111; % CH4 temperature
+TL_lox = 90; % K, LOX temperature
+TL_CH4 = 111; % K, CH4 temperature
 
-Twa = 2500; % Addiabatic wall temperature
-qw = 3000; % Heat flux at the throat
+mdot = 0.66138; % kg/s
+mdot_lox = 0.50007; %kg/s
 
-hg = 2.6*10^3; % Hot-Gas side heat transfer coefficient
+
+Twa = 2500; % K, Addiabatic wall temperature
+qw = 3000; % K, Heat flux at the throat
+
+hg = 2.6*10^3; % W/m^2-K Hot-Gas side heat transfer coefficient
 qr = 0; % Neglecting radiative heat transfer
 
 %% Calculations
