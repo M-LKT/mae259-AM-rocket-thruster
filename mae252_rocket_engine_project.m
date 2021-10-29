@@ -51,7 +51,7 @@ k = 320; % W/m^2-K Thermal conductivity of chamber wall
 Tmax = 480 + 273; % K, service temp of C18150 = 500C
 
 %% Parameters
-L = 5*10^-3; % Wall thickness of combustion chamber, m
+L = 1*10^-3; % Wall thickness of combustion chamber, m
 asprt = 2; % Aspect Ratio
 
 TL_lox = 90; % K, LOX temperature
@@ -66,7 +66,7 @@ hg = 2.6*10^3; % W/m^2-K Hot-Gas side heat transfer coefficient
 qr = 0; % Neglecting radiative heat transfer
 
 %% Calculations
-qw = hg*(Twa - Tmax); % Heat flux at the throat, W/m^2
+qw = hg*(Twa - Tmax); % Heat flux, W/m^2
 Twa_e = Twa + qr/hg;
 
 % Hydraulic Diameter for LOX Cooling Channels
@@ -93,3 +93,14 @@ height_CH4 = asprt*base_CH4;
 %% Printing Dimensions for the Cooling Channel
 fprintf('CH4 Cooling Channel Dimension: Base = %2.4f mm, Height = %2.4f mm\n', base_CH4*10^3, height_CH4*10^3)
 fprintf('LOX Cooling Channel Dimension: Base = %2.4f mm, Height = %2.4f mm\n', base_lox*10^3, height_lox*10^3)
+
+%% Heat Removed
+hg_bar = 2.6*10^3;
+qw_bar = hg_bar*(Twa - Tmax);
+H_bar = qw_bar/(Twa_e - TL_CH4);
+hL_bar = (1/H_bar - 1/hg_bar - 1/(k/L))^-1;
+
+n = (1/hL_CH4)/(1/hg + 1/(k/L));
+Twc = (TL_CH4 + n*Twa_e)/(1 + n); % Average surface temperature, K
+
+
